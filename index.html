@@ -1,11 +1,173 @@
-<!DOCTYPE html>
-<html lang="zh">
+<!doctype html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>我的个人网站</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Personal Homepage — CV</title>
+  <meta name="description" content="Resume and Projects Portfolio" />
+  <style>
+    :root{
+      --bg:#020617;
+      --card:#0a0f24;
+      --accent:#38bdf8;
+      --accent2:#818cf8;
+      --muted:#9ca3af;
+      --glass:rgba(255,255,255,0.05);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family:"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+      background:radial-gradient(circle at 20% 20%, #0f172a, #020617);
+      color:#e5e7eb;
+      line-height:1.6;
+      overflow-x:hidden;
+    }
+    .container{max-width:1200px;margin:0 auto;padding:24px}
+
+    header{display:flex;justify-content:space-between;align-items:center;padding:12px 0;margin-bottom:24px;}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-weight:700;font-size:18px;box-shadow:0 0 15px rgba(56,189,248,0.5);animation:pulse 3s ease-in-out infinite}
+    .sitename{font-size:20px;font-weight:700;letter-spacing:0.5px}
+    nav{display:flex;gap:16px;align-items:center}
+    nav a, .btn{color:inherit;text-decoration:none;padding:8px 14px;border-radius:8px;font-weight:600;transition:all .25s ease}
+    nav a:hover,.btn:hover{background:var(--glass)}
+
+    .dropdown{position:relative}
+    .dropdown-toggle{cursor:pointer;display:inline-flex;gap:6px;align-items:center}
+    .dropdown-menu{position:absolute;top:calc(100% + 6px);right:0;background:#0f172a;border-radius:10px;padding:8px;min-width:240px;box-shadow:0 6px 24px rgba(0,0,0,0.6);display:none;border:1px solid rgba(255,255,255,0.05)}
+    .dropdown-menu a{display:block;padding:8px;border-radius:6px}
+    .dropdown-menu a:hover{background:rgba(56,189,248,0.1)}
+    .dropdown.open .dropdown-menu{display:block}
+
+    main{display:grid;grid-template-columns:320px 1fr;gap:24px;animation:fadeIn 1s ease forwards}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.01));backdrop-filter:blur(10px);padding:20px;border-radius:16px;border:1px solid rgba(255,255,255,0.05);box-shadow:0 4px 20px rgba(0,0,0,0.25);transition:transform .3s ease, box-shadow .3s ease}
+    .card:hover{transform:translateY(-4px);box-shadow:0 8px 28px rgba(0,0,0,0.35)}
+
+    .profile h2{margin-bottom:8px;font-size:22px;color:var(--accent)}
+    .muted{color:var(--muted);font-size:14px}
+    .section{margin-bottom:20px}
+    .skills{display:flex;flex-wrap:wrap;gap:8px}
+    .skill{padding:6px 10px;background:rgba(56,189,248,0.08);border-radius:999px;font-size:13px;color:#bae6fd;white-space:nowrap;transition:background .3s}
+    .skill:hover{background:rgba(56,189,248,0.15)}
+
+    .project-list{display:flex;flex-direction:column;gap:16px}
+    .project{padding:16px;border-radius:12px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05);position:relative;overflow:hidden}
+    .project h3{margin:0 0 6px;color:var(--accent2)}
+    .project p{margin:0;color:var(--muted)}
+    .project a{font-weight:600;color:var(--accent)}
+
+    footer{margin-top:32px;color:var(--muted);font-size:13px;text-align:center}
+
+    @keyframes pulse{0%,100%{box-shadow:0 0 10px rgba(56,189,248,0.5)}50%{box-shadow:0 0 25px rgba(56,189,248,0.8)}}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+    @media (max-width:900px){main{grid-template-columns:1fr}}
+  </style>
 </head>
 <body>
-  <h1>欢迎来到我的个人主页！</h1>
-  <p>这里是我的第一个 GitHub Pages 网站。</p>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">XC</div>
+        <div>
+          <div class="sitename">Xinchang — CV & Portfolio</div>
+          <div class="muted">Micro/Nano Tech · Optics · Photonics · Physics · Engineering · Software · Entrepreneurship</div>
+        </div>
+      </div>
+
+      <nav>
+        <a href="#home" onclick="navigate('#home')">Home</a>
+        <div class="dropdown" id="projectsDropdown">
+          <div class="dropdown-toggle btn" onclick="toggleDropdown()">Projects ▾</div>
+          <div class="dropdown-menu" id="projectsMenu"></div>
+        </div>
+        <a class="btn" href="#contact" onclick="navigate('#contact')">Contact</a>
+        <a class="btn" href="assets/resume.pdf" target="_blank">Download CV</a>
+      </nav>
+    </header>
+
+    <main>
+      <aside class="card profile">
+        <h2>Xinchang</h2>
+        <div class="muted">Engineer · Scientist · Entrepreneur</div>
+        <div class="section">
+          <h4>About</h4>
+          <p class="muted">Experienced in micro & nano technology, optics, photonics, physics, and full-stack software development. Passionate about bridging advanced engineering with entrepreneurship.</p>
+        </div>
+        <div class="section">
+          <h4>Core Skills</h4>
+          <div class="skills">
+            <div class="skill">Micro/Nano Fabrication</div>
+            <div class="skill">Optics</div>
+            <div class="skill">Photonics</div>
+            <div class="skill">Physics</div>
+            <div class="skill">Software Dev</div>
+            <div class="skill">Entrepreneurship</div>
+          </div>
+        </div>
+        <div class="section">
+          <h4>Contact</h4>
+          <p class="muted">Email: <a href="mailto:your.email@example.com">your.email@example.com</a></p>
+        </div>
+      </aside>
+
+      <section class="card" id="content"></section>
+    </main>
+
+    <footer>© 2025 Xinchang · Deployed via GitHub Pages</footer>
+  </div>
+
+  <script>
+    const PROJECTS = [
+      {id: 'proj1', title: 'Nano Photonics Research', short: 'Research on nano-scale photonic devices.', details:`<p>Focus on micro/nano fabrication, waveguide optics, and advanced measurement techniques.</p>`},
+      {id: 'proj2', title: 'Optical Simulation Software', short: 'Developed a simulation suite for optics.', details:`<p>Built with Python and C++, supports finite-difference time-domain (FDTD) simulations.</p>`},
+      {id: 'proj3', title: 'Tech Startup Initiative', short: 'Co-founded a startup in advanced materials.', details:`<p>Worked on strategy, prototyping, and fundraising.</p>`}
+    ];
+
+    const projectsMenu=document.getElementById('projectsMenu');
+    PROJECTS.forEach(p=>{
+      const a=document.createElement('a');a.href=`#${p.id}`;a.textContent=p.title;a.onclick=()=>{navigate(`#${p.id}`);closeDropdown();};projectsMenu.appendChild(a);
+    });
+
+    const content=document.getElementById('content');
+    function renderHome(){
+      content.innerHTML=`
+        <h2>Curriculum Vitae</h2>
+        <div class="section">
+          <h3>Summary</h3>
+          <p>Background in physics and engineering, with expertise in micro/nano fabrication, optics, photonics, and software development. Entrepreneurial mindset with experience launching technology-driven ventures.</p>
+        </div>
+        <div class="section">
+          <h3>Experience</h3>
+          <ul>
+            <li>Research in nano photonics, contributing to academic publications.</li>
+            <li>Developed custom optical simulation software.</li>
+            <li>Entrepreneurial experience in technology startup environment.</li>
+            <li>Projects: <a href="#proj1" onclick="navigate('#proj1')">Nano Photonics Research</a>, <a href="#proj2" onclick="navigate('#proj2')">Optical Simulation Software</a>, <a href="#proj3" onclick="navigate('#proj3')">Tech Startup Initiative</a>.</li>
+          </ul>
+        </div>
+      `;
+    }
+
+    function renderProject(id){
+      const p=PROJECTS.find(x=>x.id===id);
+      if(!p){content.innerHTML='<h2>Not found</h2>';return;}
+      content.innerHTML=`<a href="#home" onclick="navigate('#home')">← Back</a><h2>${p.title}</h2><div class="section">${p.details}</div>`;
+    }
+
+    function renderContact(){
+      content.innerHTML=`<h2>Contact</h2><p>Email: <a href="mailto:your.email@example.com">your.email@example.com</a></p>`;
+    }
+
+    function navigate(hash){window.location.hash=hash;}
+    window.addEventListener('hashchange',()=>{route(window.location.hash)});
+    function route(hash){const id=(hash||'#home').replace('#','');if(id==='home'||id==='')renderHome();else if(id==='contact')renderContact();else renderProject(id);window.scrollTo({top:0,behavior:'smooth'});}
+
+    function toggleDropdown(){const dd=document.getElementById('projectsDropdown');const expanded=dd.classList.toggle('open');}
+    function closeDropdown(){document.getElementById('projectsDropdown').classList.remove('open');}
+
+    if(!window.location.hash)window.location.hash='#home';route(window.location.hash);
+    document.addEventListener('click',e=>{const dd=document.getElementById('projectsDropdown');if(!dd.contains(e.target))closeDropdown();});
+  </script>
 </body>
 </html>
