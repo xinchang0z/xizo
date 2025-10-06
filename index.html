@@ -1,374 +1,519 @@
-<?php
-// PHP 代码：用于生成动态年份，模仿版权信息
-$current_year = date("Y");
-
-// CV 数据提取 (模拟)
-$name = "Xinchang Zou"; //
-$title = "Scientific Staff | Micro/Nano Lithography & Metrology";
-$email = "xinchang.zou@outlook.com"; //
-$linkedin_url = "#"; // 请替换为您的LinkedIn链接
-$github_url = "#"; // 请替换为您的GitHub链接
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo $name; ?> | Lithography & Metrology</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap">
+    <title>Xinchang Zou - Micro & Nano Technology Researcher</title>
     <style>
-        /* ASML风格：极简、高对比度、专业 */
-        :root {
-            --primary-color: #000000; /* 黑色 */
-            --secondary-color: #ffffff; /* 白色 */
-            --accent-color: #007bff; /* 科技蓝作为点缀 */
-            --light-grey: #f4f4f4; /* 浅灰色背景 */
-            --text-color: #333333; /* 深灰或黑色文字 */
-            --font-family: 'Roboto', 'Arial', sans-serif;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
-            font-family: var(--font-family);
-            color: var(--text-color);
-            background-color: var(--secondary-color);
-            margin: 0;
-            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
             line-height: 1.6;
-            scroll-behavior: smooth;
+            color: #1a1a1a;
+            background: #ffffff;
         }
 
         .container {
-            width: 80%;
             max-width: 1200px;
             margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header */
+        header {
+            background: #ffffff;
+            border-bottom: 1px solid #e5e5e5;
+            position: sticky;
+            top: 0;
+            z-index: 100;
             padding: 20px 0;
         }
 
-        /* 导航栏 - 简洁、固定 */
-        .header {
-            background-color: var(--secondary-color);
-            border-bottom: 1px solid var(--light-grey);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .nav-bar {
+        .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 0;
         }
 
         .logo {
-            font-size: 1.5em;
-            font-weight: 700;
-            color: var(--primary-color);
-            text-decoration: none;
-            letter-spacing: 1px;
+            font-size: 20px;
+            font-weight: 600;
+            color: #0066cc;
+            letter-spacing: -0.5px;
         }
 
-        .nav-links a {
-            color: var(--primary-color);
+        nav a {
+            margin-left: 32px;
+            color: #1a1a1a;
             text-decoration: none;
-            margin-left: 25px;
-            font-weight: 400;
+            font-size: 14px;
+            font-weight: 500;
             transition: color 0.3s;
         }
 
-        .nav-links a:hover {
-            color: var(--accent-color);
+        nav a:hover {
+            color: #0066cc;
         }
-        
-        /* 突出区块（Hero Section） - 留白和重点文字 */
+
+        /* Hero Section */
         .hero {
-            padding: 100px 0;
-            text-align: left;
-            background-color: var(--secondary-color);
-            border-bottom: 1px solid var(--light-grey);
+            padding: 120px 0 80px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
         }
 
         .hero h1 {
-            font-size: 3.5em;
-            margin: 0 0 10px 0;
+            font-size: 48px;
             font-weight: 700;
-            color: var(--primary-color);
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+            color: #1a1a1a;
         }
 
-        .hero p {
-            font-size: 1.5em;
+        .hero .subtitle {
+            font-size: 24px;
             color: #666;
-            margin-bottom: 30px;
+            margin-bottom: 32px;
+            font-weight: 300;
+        }
+
+        .hero .contact-info {
+            display: flex;
+            gap: 32px;
+            font-size: 14px;
+            color: #666;
+            margin-top: 24px;
         }
 
         .contact-info a {
-            display: inline-block;
-            margin-right: 15px;
-            color: var(--accent-color);
+            color: #0066cc;
             text-decoration: none;
-            font-weight: 500;
         }
 
-        /* 主要内容区块 - 模块化和网格布局 */
+        /* Section Styles */
         section {
             padding: 80px 0;
-            border-bottom: 1px solid var(--light-grey);
         }
 
-        section:last-child {
+        section:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 48px;
+            color: #1a1a1a;
+            letter-spacing: -0.5px;
+        }
+
+        /* Education */
+        .education-item {
+            margin-bottom: 40px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .education-item:last-child {
             border-bottom: none;
         }
 
-        h2 {
-            font-size: 2.5em;
-            color: var(--primary-color);
-            border-bottom: 3px solid var(--accent-color);
-            display: inline-block;
-            padding-bottom: 5px;
-            margin-bottom: 40px;
-            font-weight: 700;
-        }
-
-        /* 项目/经历列表样式 */
-        .item-list {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 40px;
-        }
-
-        .item {
-            padding: 25px;
-            background-color: var(--light-grey);
-            border-left: 5px solid var(--accent-color);
-            transition: box-shadow 0.3s;
-        }
-
-        .item:hover {
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-        }
-
-        .item h3 {
-            margin: 0 0 5px 0;
-            font-size: 1.4em;
-            color: var(--primary-color);
-        }
-
-        .item p {
-            margin: 5px 0;
-            color: #666;
-        }
-
-        .item-details {
-            font-size: 0.95em;
-            margin-top: 10px;
-            padding-left: 15px;
-            border-left: 2px solid #ccc;
-        }
-
-        .item-details li {
+        .edu-header {
+            display: flex;
+            justify-content: space-between;
             margin-bottom: 8px;
         }
 
-        /* 技能部分 - 简洁的标签样式 */
-        .skills-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
+        .edu-degree {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1a1a1a;
         }
 
-        .skill-tag {
-            background-color: var(--primary-color);
-            color: var(--secondary-color);
-            padding: 8px 15px;
-            border-radius: 5px;
-            font-size: 0.9em;
-            font-weight: 300;
-            transition: background-color 0.3s;
-        }
-
-        .skill-tag:hover {
-            background-color: var(--accent-color);
-        }
-
-        /* 页脚 */
-        .footer {
-            text-align: center;
-            padding: 30px 0;
-            background-color: var(--light-grey);
+        .edu-period {
+            font-size: 14px;
             color: #666;
-            font-size: 0.9em;
         }
 
-        /* 响应式设计 */
+        .edu-institution {
+            font-size: 16px;
+            color: #0066cc;
+            margin-bottom: 4px;
+        }
+
+        .edu-major {
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* Experience */
+        .experience-item {
+            margin-bottom: 48px;
+            padding-left: 24px;
+            border-left: 2px solid #0066cc;
+        }
+
+        .exp-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+        }
+
+        .exp-company {
+            font-size: 16px;
+            color: #0066cc;
+            margin-bottom: 4px;
+        }
+
+        .exp-period {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 16px;
+        }
+
+        .exp-description {
+            font-size: 15px;
+            color: #444;
+            line-height: 1.8;
+        }
+
+        .exp-description ul {
+            margin-top: 12px;
+            padding-left: 20px;
+        }
+
+        .exp-description li {
+            margin-bottom: 8px;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+        }
+
+        .skill-category {
+            padding: 32px;
+            background: #ffffff;
+            border: 1px solid #e5e5e5;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+        }
+
+        .skill-category h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: #1a1a1a;
+        }
+
+        .skill-category ul {
+            list-style: none;
+        }
+
+        .skill-category li {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 8px;
+            padding-left: 16px;
+            position: relative;
+        }
+
+        .skill-category li:before {
+            content: "•";
+            color: #0066cc;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Projects */
+        .project-item {
+            margin-bottom: 48px;
+            padding: 32px;
+            background: #ffffff;
+            border: 1px solid #e5e5e5;
+        }
+
+        .project-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+        }
+
+        .project-period {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 16px;
+        }
+
+        .project-description {
+            font-size: 15px;
+            color: #444;
+            line-height: 1.8;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: #ffffff;
+            padding: 48px 0;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 14px;
+            color: #999;
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
-            .container {
-                width: 90%;
-            }
-            .hero {
-                padding: 60px 0;
-            }
             .hero h1 {
-                font-size: 2.5em;
+                font-size: 36px;
             }
-            .hero p {
-                font-size: 1.2em;
+
+            .hero .subtitle {
+                font-size: 18px;
             }
-            .nav-bar {
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .contact-info {
                 flex-direction: column;
+                gap: 12px;
             }
-            .nav-links a {
-                margin: 0 10px;
-                display: inline-block;
+
+            nav a {
+                margin-left: 16px;
+                font-size: 13px;
             }
         }
     </style>
 </head>
 <body>
-
-<div class="header">
-    <div class="container nav-bar">
-        <a href="#home" class="logo"><?php echo $name; ?></a>
-        <div class="nav-links">
-            <a href="#about">简介</a>
-            <a href="#skills">技能</a>
-            <a href="#experience">经历</a>
-            <a href="#projects">项目</a>
-        </div>
-    </div>
-</div>
-
-<section class="hero" id="home">
-    <div class="container">
-        <h1><?php echo $name; ?></h1>
-        <p><?php echo $title; ?></p>
-        <div class="contact-info">
-            <a href="mailto:<?php echo $email; ?>">Email: <?php echo $email; ?></a>
-            <a href="<?php echo $linkedin_url; ?>" target="_blank">LinkedIn</a>
-            <a href="<?php echo $github_url; ?>" target="_blank">GitHub</a>
-        </div>
-    </div>
-</section>
-
-<section id="about">
-    <div class="container">
-        <h2>简介 & 教育</h2>
-        <p>作为一名在**微纳加工与计量**领域拥有深厚背景的科研人员，我专注于**光刻、数据优化、自动检测**等高精度技术。目前正在 **TU Ilmenau** 攻读工程博士学位，并在 **GenISys** 和 **Carl Zeiss SMT** 等领先科技公司积累了宝贵的应用工程和测试自动化经验。</p>
-        
-        <div class="item-list">
-            <div class="item">
-                <h3>博士 (Dr.-Ing.) - TU Ilmenau/NanoFab</h3>
-                <p>2023年4月 - 2026年3月 | 德国</p>
-            </div>
-            <div class="item">
-                <h3>理学硕士 (M.Sc.) - 弗里德里希·席勒大学耶拿/Abbe School of Photonics</h3>
-                <p>2018年9月 - 2021年9月 | 光子学</p>
-            </div>
-            <div class="item">
-                <h3>理学学士 (B.Sc.) - 江南大学</h3>
-                <p>2014年9月 - 2018年6月 | 光电信息科学与工程</p>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">XINCHANG ZOU</div>
+                <nav>
+                    <a href="#education">Education</a>
+                    <a href="#experience">Experience</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#projects">Projects</a>
+                </nav>
             </div>
         </div>
-    </div>
-</section>
+    </header>
 
-<section id="skills">
-    <div class="container">
-        <h2>核心技能</h2>
-        <div class="skills-grid">
-            <span class="skill-tag">微纳加工与计量 (Micro/Nano-technology)</span>
-            <span class="skill-tag">光刻数据处理 (OPC/PEC/Layout)</span>
-            <span class="skill-tag">扫描电镜 (SEM) & E-beam Lithography</span>
-            <span class="skill-tag">自动测试与编程 (Ranorex/Python/MATLAB)</span>
-            <span class="skill-tag">光学设计与仿真 (Zemax/Tracepro)</span>
-            <span class="skill-tag">洁净室工艺 (Clean Room Process)</span>
-            <span class="skill-tag">Fizeau/白光/激光显微镜计量</span>
-            <span class="skill-tag">图像与数据处理 (Image Processing/Batch Measurement)</span>
-            <span class="skill-tag">多语言 (English, German, Chinese)</span>
+    <section class="hero">
+        <div class="container">
+            <h1>Xinchang Zou</h1>
+            <p class="subtitle">Micro & Nano Technology Researcher</p>
+            <p style="font-size: 16px; color: #444; max-width: 720px; line-height: 1.8;">
+                PhD researcher specializing in direct laser writing lithography, nanopositioning, and advanced metrology techniques. Experienced in micro/nano-fabrication and precision engineering.
+            </p>
+            <div class="contact-info">
+                <span>📍 Ilmenau, Germany</span>
+                <span>✉️ <a href="mailto:xinchang.zou@outlook.com">xinchang.zou@outlook.com</a></span>
+                <span>📞 +49 15777905642</span>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<section id="experience">
-    <div class="container">
-        <h2>工作经历</h2>
-        
-        <div class="item-list">
-            <div class="item">
-                <h3>科学人员 (Scientific Staff)</h3>
-                <p>TU Ilmenau/NanoFab/IPMS | 2023年4月 - 至今</p>
-                <ul class="item-details">
-                    <li>研究和开发**微纳计量与制造**技术。</li>
-                    <li>专注于**亚纳米定位**和**配置化光刻**的实现。</li>
-                    <li>设计、构建和表征直接激光写入光刻系统。</li>
-                </ul>
-            </div>
-
-            <div class="item">
-                <h3>应用工程师 (Application Engineer)</h3>
-                <p>GenISys GmbH | 2021年10月 - 2023年3月</p>
-                <ul class="item-details">
-                    <li>负责**光刻数据预处理（近邻效应校正和优化）**、仿真和计量。</li>
-                    <li>对复杂的特殊应用提供技术支持，并参与产品开发与发布计划。</li>
-                    <li>管理项目并协调软硬件开发合作伙伴。</li>
-                </ul>
-            </div>
-
-            <div class="item">
-                <h3>测试自动化工程师 (Test Automation Engineer)</h3>
-                <p>Carl Zeiss SMT GmbH | 2019年10月 - 2021年9月</p>
-                <ul class="item-details">
-                    <li>使用 **Ranorex** 和自制测试自动化框架 (TAF) 开发和维护自动化测试。</li>
-                    <li>分析和故障排除测试报告错误。</li>
-                    <li>通过 **GIT** 维护测试数据并持续优化测试结构。</li>
-                </ul>
-            </div>
+    <section id="education">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
             
+            <div class="education-item">
+                <div class="edu-header">
+                    <div class="edu-degree">Doctorate of Engineering</div>
+                    <div class="edu-period">Apr 2023 - Mar 2026</div>
+                </div>
+                <div class="edu-institution">TU Ilmenau / NanoFab</div>
+            </div>
+
+            <div class="education-item">
+                <div class="edu-header">
+                    <div class="edu-degree">Master of Science (M.Sc.)</div>
+                    <div class="edu-period">Sep 2018 - Sep 2021</div>
+                </div>
+                <div class="edu-institution">Friedrich Schiller University Jena</div>
+                <div class="edu-major">Photonics • Abbe School of Photonics</div>
+            </div>
+
+            <div class="education-item">
+                <div class="edu-header">
+                    <div class="edu-degree">Bachelor of Science</div>
+                    <div class="edu-period">Sep 2014 - Jun 2018</div>
+                </div>
+                <div class="edu-institution">Jiangnan University</div>
+                <div class="edu-major">Optoelectronic Information Science and Engineering</div>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<section id="projects">
-    <div class="container">
-        <h2>重点科研项目</h2>
-        
-        <div class="item-list">
-            <div class="item">
-                <h3>直接激光写入光刻与计量 (Direct Laser Writing Lithography)</h3>
-                <p>TU Ilmenau/NanoFab | 2023年4月 - 至今</p>
-                <ul class="item-details">
-                    <li>聚焦单光子和多光子光刻研究。</li>
-                    <li>进行系统性能表征，包括**鲁棒性、稳定性和重复性**。</li>
-                </ul>
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title">Professional Experience</h2>
+
+            <div class="experience-item">
+                <div class="exp-title">Scientific Staff</div>
+                <div class="exp-company">TU Ilmenau / NanoFab / IPMS</div>
+                <div class="exp-period">Apr 2023 - Present</div>
+                <div class="exp-description">
+                    Research and development in advanced manufacturing technologies:
+                    <ul>
+                        <li>Micro and nano-metrology techniques</li>
+                        <li>Micro and nano-fabrication processes</li>
+                        <li>Sub-nanometer positioning systems</li>
+                    </ul>
+                </div>
             </div>
 
-            <div class="item">
-                <h3>光刻数据准备、仿真与计量</h3>
-                <p>GenISys GmbH | 2021年10月 - 2023年3月</p>
-                <ul class="item-details">
-                    <li>精确评估工艺偏差，包括**套刻精度 (Overlay)**、**临界尺寸均匀性 (CDU)** 等。</li>
-                    <li>进行阵列和矩阵结构的**批量测量**和统计分析。</li>
-                    <li>实现**扫描电镜上的自动计量**。</li>
-                </ul>
+            <div class="experience-item">
+                <div class="exp-title">Application Engineer</div>
+                <div class="exp-company">GenISys GmbH</div>
+                <div class="exp-period">Oct 2021 - Mar 2023</div>
+                <div class="exp-description">
+                    <ul>
+                        <li>Maintained and improved product training programs</li>
+                        <li>Supported field application team on technically complex applications</li>
+                        <li>Contributed to technical specifications during development cycles</li>
+                        <li>Managed projects coordinating developers and cooperation partners</li>
+                        <li>Performed image and data processing with comprehensive documentation</li>
+                    </ul>
+                </div>
             </div>
 
-            <div class="item">
-                <h3>大面积光栅的直写方法研究 (Master Thesis)</h3>
-                <p>Fraunhofer IOF | 2020年8月 - 2021年9月</p>
-                <ul class="item-details">
-                    <li>设计曝光配方并编程实现**批量命令控制**。</li>
-                    <li>使用多种计量设备对系统性能进行调查和优化。</li>
-                </ul>
+            <div class="experience-item">
+                <div class="exp-title">Test Automation Engineer</div>
+                <div class="exp-company">Carl Zeiss SMT GmbH</div>
+                <div class="exp-period">Oct 2019 - Sep 2021</div>
+                <div class="exp-description">
+                    <ul>
+                        <li>Developed and maintained automated tests using Ranorex and custom frameworks</li>
+                        <li>Analyzed and troubleshooted errors in test reports</li>
+                        <li>Continuously improved automated test structures</li>
+                        <li>Optimized Test Automation Framework (TAF)</li>
+                    </ul>
+                </div>
             </div>
 
+            <div class="experience-item">
+                <div class="exp-title">Research Associate & Intern</div>
+                <div class="exp-company">Fraunhofer Institute IOF</div>
+                <div class="exp-period">Mar 2019 - Sep 2021</div>
+                <div class="exp-description">
+                    Conducted research in optical systems and lithography, including master thesis on direct writing methods for large area gratings and system design for interference lithography.
+                </div>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<footer class="footer">
-    <div class="container">
-        <p>&copy; <?php echo $current_year; ?> <?php echo $name; ?>. All Rights Reserved. | Designed with a Minimalist Tech Approach.</p>
-    </div>
-</footer>
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Micro & Nano Technology</h3>
+                    <ul>
+                        <li>Optical proximity correction</li>
+                        <li>Proximity effect correction</li>
+                        <li>Clean room processes</li>
+                        <li>Electron beam lithography</li>
+                        <li>Layout design (GDSII, OASIS)</li>
+                    </ul>
+                </div>
 
+                <div class="skill-category">
+                    <h3>Metrology & Measurement</h3>
+                    <ul>
+                        <li>Fizeau phase-shift interferometer</li>
+                        <li>Scanning laser microscope</li>
+                        <li>White light interferometer</li>
+                        <li>SEM (Zeiss AURIGA, Raith systems)</li>
+                        <li>Image processing & analysis</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Software & Programming</h3>
+                    <ul>
+                        <li>MATLAB, Python, Visual Basic</li>
+                        <li>Zemax, Tracepro</li>
+                        <li>Ranorex test automation</li>
+                        <li>Azure DevOps, SAP, SugarCRM</li>
+                        <li>Windows, Linux</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Languages</h3>
+                    <ul>
+                        <li>English (Professional)</li>
+                        <li>German (Professional)</li>
+                        <li>Chinese (Native)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Research Projects</h2>
+
+            <div class="project-item">
+                <div class="project-title">Direct Laser Writing Lithography and Metrology</div>
+                <div class="project-period">Apr 2023 - Present</div>
+                <div class="project-description">
+                    Investigation of single and multi-photon lithography on nanopositioning machines. Design and characterization of direct laser writing systems, including optical, mechanical, and electronic implementation. Development of metrology solutions for lithography alignment and configurable fabrication.
+                </div>
+            </div>
+
+            <div class="project-item">
+                <div class="project-title">Data Preparation and Simulation for Lithography</div>
+                <div class="project-period">Oct 2021 - Mar 2023</div>
+                <div class="project-description">
+                    Proximity correction and optimization of layout data to minimize design-manufacturing deviation. Process simulation and prediction. Advanced metrology including roughness evaluation, overlay measurement, and automated SEM inspection.
+                </div>
+            </div>
+
+            <div class="project-item">
+                <div class="project-title">Investigation of Direct Writing Methods for Large Area Gratings</div>
+                <div class="project-period">Aug 2020 - Sep 2021</div>
+                <div class="project-description">
+                    Master thesis project focusing on exposure recipe design, batch command programming, and comprehensive characterization using multiple measurement techniques. Optimization of lithography system performance including resolution, homogeneity, and stability.
+                </div>
+            </div>
+
+            <div class="project-item">
+                <div class="project-title">System Design for Direct Writing Interference Lithography</div>
+                <div class="project-period">Nov 2019 - Jul 2020</div>
+                <div class="project-description">
+                    Optical design including diffractive gratings, mechanical assembly, and electronic control with LabVIEW. Collaboration with partners for system integration and clean room processing.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Xinchang Zou. All rights reserved.</p>
+        </div>
+    </footer>
 </body>
 </html>
