@@ -1,434 +1,519 @@
-<?php
-// Simple PHP index file for personal website
-// Outputs HTML with embedded CSS for a clean, tech-inspired design
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Xinchang Zou - Photonics & Nanotechnology Engineer</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <title>Xinchang Zou - Micro & Nano Technology Researcher</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
         body {
-            font-family: 'Roboto', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
             line-height: 1.6;
-            color: #333;
-            background-color: #f8f9fa;
+            color: #1a1a1a;
+            background: #ffffff;
         }
-        header {
-            background: linear-gradient(135deg, #007BFF 0%, #0056b3 100%);
-            color: white;
-            padding: 1rem 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        nav {
+
+        .container {
             max-width: 1200px;
             margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header */
+        header {
+            background: #ffffff;
+            border-bottom: 1px solid #e5e5e5;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 20px 0;
+        }
+
+        .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 2rem;
         }
-        nav h1 {
-            font-size: 1.5rem;
-            font-weight: 300;
+
+        .logo {
+            font-size: 20px;
+            font-weight: 600;
+            color: #0066cc;
+            letter-spacing: -0.5px;
         }
-        nav ul {
-            list-style: none;
-            display: flex;
-        }
-        nav ul li {
-            margin-left: 2rem;
-        }
-        nav ul li a {
-            color: white;
+
+        nav a {
+            margin-left: 32px;
+            color: #1a1a1a;
             text-decoration: none;
-            font-weight: 400;
-            transition: opacity 0.3s;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s;
         }
-        nav ul li a:hover {
-            opacity: 0.8;
+
+        nav a:hover {
+            color: #0066cc;
         }
-        main {
-            margin-top: 80px;
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
-            padding: 2rem;
-        }
+
+        /* Hero Section */
         .hero {
-            text-align: center;
-            padding: 4rem 0;
-            background: white;
-            margin-bottom: 3rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            padding: 120px 0 80px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
         }
+
         .hero h1 {
-            font-size: 3rem;
-            font-weight: 300;
-            color: #007BFF;
-            margin-bottom: 0.5rem;
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+            color: #1a1a1a;
         }
+
         .hero .subtitle {
-            font-size: 1.2rem;
+            font-size: 24px;
             color: #666;
-            margin-bottom: 1rem;
-        }
-        .contact {
-            font-size: 0.9rem;
-            color: #888;
-            margin-bottom: 2rem;
-        }
-        section {
-            margin-bottom: 3rem;
-            background: white;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-        }
-        section h2 {
-            font-size: 2rem;
+            margin-bottom: 32px;
             font-weight: 300;
-            color: #007BFF;
-            margin-bottom: 1.5rem;
-            border-bottom: 2px solid #e9ecef;
-            padding-bottom: 0.5rem;
         }
-        .timeline {
+
+        .hero .contact-info {
+            display: flex;
+            gap: 32px;
+            font-size: 14px;
+            color: #666;
+            margin-top: 24px;
+        }
+
+        .contact-info a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 80px 0;
+        }
+
+        section:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 48px;
+            color: #1a1a1a;
+            letter-spacing: -0.5px;
+        }
+
+        /* Education */
+        .education-item {
+            margin-bottom: 40px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .education-item:last-child {
+            border-bottom: none;
+        }
+
+        .edu-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .edu-degree {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+
+        .edu-period {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .edu-institution {
+            font-size: 16px;
+            color: #0066cc;
+            margin-bottom: 4px;
+        }
+
+        .edu-major {
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* Experience */
+        .experience-item {
+            margin-bottom: 48px;
+            padding-left: 24px;
+            border-left: 2px solid #0066cc;
+        }
+
+        .exp-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+        }
+
+        .exp-company {
+            font-size: 16px;
+            color: #0066cc;
+            margin-bottom: 4px;
+        }
+
+        .exp-period {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 16px;
+        }
+
+        .exp-description {
+            font-size: 15px;
+            color: #444;
+            line-height: 1.8;
+        }
+
+        .exp-description ul {
+            margin-top: 12px;
+            padding-left: 20px;
+        }
+
+        .exp-description li {
+            margin-bottom: 8px;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+        }
+
+        .skill-category {
+            padding: 32px;
+            background: #ffffff;
+            border: 1px solid #e5e5e5;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+        }
+
+        .skill-category h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: #1a1a1a;
+        }
+
+        .skill-category ul {
+            list-style: none;
+        }
+
+        .skill-category li {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 8px;
+            padding-left: 16px;
             position: relative;
         }
-        .timeline-item {
-            margin-bottom: 2rem;
-            padding-left: 2rem;
-            position: relative;
-        }
-        .timeline-item::before {
-            content: '';
+
+        .skill-category li:before {
+            content: "•";
+            color: #0066cc;
+            font-weight: bold;
             position: absolute;
             left: 0;
-            top: 0;
-            width: 2px;
-            height: 100%;
-            background: #007BFF;
         }
-        .timeline-item h3 {
-            font-size: 1.1rem;
-            font-weight: 500;
-            color: #333;
-            margin-bottom: 0.5rem;
+
+        /* Projects */
+        .project-item {
+            margin-bottom: 48px;
+            padding: 32px;
+            background: #ffffff;
+            border: 1px solid #e5e5e5;
         }
-        .timeline-item .date {
-            color: #007BFF;
-            font-weight: 400;
-            margin-bottom: 0.5rem;
+
+        .project-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 8px;
         }
-        .timeline-item .institution {
+
+        .project-period {
+            font-size: 14px;
             color: #666;
-            font-style: italic;
-            margin-bottom: 0.5rem;
+            margin-bottom: 16px;
         }
-        .timeline-item ul {
-            list-style-type: disc;
-            padding-left: 1.5rem;
-            color: #555;
+
+        .project-description {
+            font-size: 15px;
+            color: #444;
+            line-height: 1.8;
         }
-        .timeline-item ul li {
-            margin-bottom: 0.5rem;
-        }
-        .skills {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1rem;
-        }
-        .skills ul {
-            list-style: none;
-        }
-        .skills ul li {
-            background: #f8f9fa;
-            padding: 0.5rem 1rem;
-            margin-bottom: 0.5rem;
-            border-radius: 4px;
-            border-left: 4px solid #007BFF;
-        }
-        .projects, .experience {
-            display: grid;
-            gap: 1.5rem;
-        }
-        .project-item, .exp-item {
-            border-left: 4px solid #007BFF;
-            padding-left: 1rem;
-        }
-        .project-item h3, .exp-item h3 {
-            font-size: 1.1rem;
-            color: #333;
-            margin-bottom: 0.5rem;
-        }
-        .project-item .date, .exp-item .date {
-            color: #007BFF;
-            font-weight: 400;
-        }
-        .certificates {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-        .certificates ul li {
-            background: #f8f9fa;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-        }
+
+        /* Footer */
         footer {
-            background: #333;
-            color: white;
+            background: #1a1a1a;
+            color: #ffffff;
+            padding: 48px 0;
             text-align: center;
-            padding: 2rem;
-            margin-top: 3rem;
         }
+
+        footer p {
+            font-size: 14px;
+            color: #999;
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2rem; }
-            nav { flex-direction: column; padding: 1rem; }
-            nav ul { margin-top: 1rem; }
-            nav ul li { margin-left: 1rem; margin-right: 1rem; }
-            main { padding: 1rem; }
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero .subtitle {
+                font-size: 18px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            nav a {
+                margin-left: 16px;
+                font-size: 13px;
+            }
         }
     </style>
 </head>
 <body>
     <header>
-        <nav>
-            <h1>Xinchang Zou</h1>
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#certificates">Certificates</a></li>
-            </ul>
-        </nav>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">XINCHANG ZOU</div>
+                <nav>
+                    <a href="#education">Education</a>
+                    <a href="#experience">Experience</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#projects">Projects</a>
+                </nav>
+            </div>
+        </div>
     </header>
 
-    <main>
-        <section id="about" class="hero">
+    <section class="hero">
+        <div class="container">
             <h1>Xinchang Zou</h1>
-            <p class="subtitle">Photonics & Nanotechnology Engineer | Doctoral Candidate at TU Ilmenau</p>
-            <div class="contact">
-                <p>Poststr. 24, 98693 Ilmenau, Germany</p>
-                <p>Email: <a href="mailto:xinchang.zou@outlook.com" style="color: #007BFF;">xinchang.zou@outlook.com</a> | Phone: +49 15777905642</p>
+            <p class="subtitle">Micro & Nano Technology Researcher</p>
+            <p style="font-size: 16px; color: #444; max-width: 720px; line-height: 1.8;">
+                PhD researcher specializing in direct laser writing lithography, nanopositioning, and advanced metrology techniques. Experienced in micro/nano-fabrication and precision engineering.
+            </p>
+            <div class="contact-info">
+                <span>📍 Ilmenau, Germany</span>
+                <span>✉️ <a href="mailto:xinchang.zou@outlook.com">xinchang.zou@outlook.com</a></span>
+                <span>📞 +49 15777905642</span>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="education">
-            <h2>Education</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <h3>Doctorate of Engineering</h3>
-                    <div class="date">Apr 2023 – Mar 2026</div>
-                    <div class="institution">TU Ilmenau / NanoFab</div>
+    <section id="education">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            
+            <div class="education-item">
+                <div class="edu-header">
+                    <div class="edu-degree">Doctorate of Engineering</div>
+                    <div class="edu-period">Apr 2023 - Mar 2026</div>
                 </div>
-                <div class="timeline-item">
-                    <h3>Master of Science (M.Sc.) in Photonics</h3>
-                    <div class="date">Sep 2018 – Sep 2021</div>
-                    <div class="institution">Friedrich Schiller University Jena / Abbe School of Photonics</div>
-                </div>
-                <div class="timeline-item">
-                    <h3>Bachelor of Science in Optoelectronic Information Science and Engineering</h3>
-                    <div class="date">Sep 2014 – Jun 2018</div>
-                    <div class="institution">Jiangnan University</div>
-                </div>
+                <div class="edu-institution">TU Ilmenau / NanoFab</div>
             </div>
-        </section>
 
-        <section id="skills">
-            <h2>Skills</h2>
-            <div class="skills">
-                <ul>
-                    <li>Micro- and Nano-technology development</li>
-                    <li>Exposure optimization with data preparation and simulation (e.g., optical proximity correction, proximity effect correction and calibration)</li>
-                    <li>Clean room process (e.g., coating and development)</li>
-                    <li>Measurement technology (e.g., Fizeau phase-shift interferometer, scanning laser microscope, white light interferometer, optical microscope) with image processing (e.g., edge detection, structure roughness evaluation, batch measurement, noise filtering, contrast enhancement)</li>
-                </ul>
-                <ul>
-                    <li>SEM projects experience: Zeiss AURIGA GEMINI series, Raith VOYAGER and eLiNE (with electron beam lithography) system</li>
-                    <li>Layout file design: GDSII, OASIS, LEDB, etc.</li>
-                    <li>Laboratory experience for optics involving laser, metrology, imaging system, etc.</li>
-                    <li>Programming: Visual Basic, MATLAB, Python, etc.</li>
-                    <li>Test automation: Ranorex</li>
-                    <li>Management: Azure DevOps, SugarCRM, SAP</li>
-                    <li>Operating systems: Windows, Linux</li>
-                    <li>Optical design, simulation and analysis: Zemax, Tracepro</li>
-                    <li>Languages: English, German, Chinese</li>
-                </ul>
+            <div class="education-item">
+                <div class="edu-header">
+                    <div class="edu-degree">Master of Science (M.Sc.)</div>
+                    <div class="edu-period">Sep 2018 - Sep 2021</div>
+                </div>
+                <div class="edu-institution">Friedrich Schiller University Jena</div>
+                <div class="edu-major">Photonics • Abbe School of Photonics</div>
             </div>
-        </section>
 
-        <section id="projects">
-            <h2>Projects</h2>
-            <div class="projects">
-                <div class="project-item">
-                    <h3>Direct laser writing lithography and metrology based on nanopositioning and nanomeasuring machine</h3>
-                    <div class="date">Apr 2023 – Now</div>
-                    <ul>
-                        <li>Investigation of single- and multi-photon lithography</li>
-                        <li>Design, construction and characterization of direct laser writing lithography including implementation of optical, mechanical and electronical concepts, programming, and so on</li>
-                        <li>Pre-development metrology research, development and application</li>
-                        <li>Concept verification and investigation</li>
-                        <li>Performance characterization including robustness, stability, repeatability, and so on</li>
-                        <li>Application for lithography alignment and realization of configurable lithography</li>
-                    </ul>
+            <div class="education-item">
+                <div class="edu-header">
+                    <div class="edu-degree">Bachelor of Science</div>
+                    <div class="edu-period">Sep 2014 - Jun 2018</div>
                 </div>
-                <div class="project-item">
-                    <h3>Data preparation, simulation and metrology for lithography</h3>
-                    <div class="date">Oct 2021 – Mar 2023</div>
-                    <ul>
-                        <li>Proximity correction and optimization of layout data to minimize deviation between design and manufacturing</li>
-                        <li>Simulating and predicting different phase of lithography process</li>
-                        <li>Metrology and inspection of manufactured structure</li>
-                        <li>Multiple features detection in array and matrix structure, as well as batch measurement processing and statistical analysis</li>
-                        <li>Roughness evaluation including line edge roughness, line width roughness, contact edge roughness, and so on</li>
-                        <li>Process deviation evaluation including overlay, critical dimension uniformity, edge placement error, process variability band, and so on</li>
-                        <li>Automatic metrology implemented on scanning electron microscope</li>
-                    </ul>
-                </div>
-                <div class="project-item">
-                    <h3>Investigation of Direct Writing Methods for Large Area Gratings</h3>
-                    <div class="date">Aug 2020 – Sep 2021</div>
-                    <ul>
-                        <li>Design of exposure recipe for specified structure</li>
-                        <li>Programming for batch commands control</li>
-                        <li>Measurement with optical microscope, scanning laser microscope, scanning electron microscope, white light interferometer, and Fizeau phase-shift interferometer</li>
-                        <li>Investigation and optimization of performance (e.g., resolution, homogeneity, and stability) of the developed lithography system</li>
-                        <li>Process Investigation and optimization e.g., anti-reflective coating design</li>
-                    </ul>
-                </div>
-                <div class="project-item">
-                    <h3>System Design for Direct Writing Interference Lithography</h3>
-                    <div class="date">Nov 2019 – Jul 2020</div>
-                    <ul>
-                        <li>Optical design including diffractive grating design</li>
-                        <li>Cooperation with internal and external partners for quotation</li>
-                        <li>Mechanical consideration and assembly of lithography system</li>
-                        <li>Electronics control with LabVIEW</li>
-                        <li>Process in clean room</li>
-                    </ul>
-                </div>
-                <div class="project-item">
-                    <h3>Compact Microoptical System for Multispectral Imaging</h3>
-                    <div class="date">Mar 2019 – Sep 2019</div>
-                    <ul>
-                        <li>Investigation of super resolution algorithm</li>
-                        <li>Experiment design to test the imaging performance of the device</li>
-                    </ul>
-                </div>
-                <div class="project-item">
-                    <h3>Visible and Near-infrared Wavelength Range Antireflection Coating</h3>
-                    <div class="date">Dec 2017 – Jun 2018</div>
-                    <ul>
-                        <li>Material consideration for coating</li>
-                        <li>Theoretical design the coating system and optimization with software</li>
-                        <li>Coating with electron beam physical vapor deposition</li>
-                        <li>Measurement with spectrometer and scanning electron microscope</li>
-                    </ul>
-                </div>
+                <div class="edu-institution">Jiangnan University</div>
+                <div class="edu-major">Optoelectronic Information Science and Engineering</div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="experience">
-            <h2>Work Experience</h2>
-            <div class="experience">
-                <div class="exp-item">
-                    <h3>Scientific Staff</h3>
-                    <div class="date">Apr 2023 – Now</div>
-                    <div class="institution">TU Ilmenau / NanoFab / IPMS</div>
-                    <ul>
-                        <li>Researching and developing techniques for: Micro- and Nano-metrology, Micro- and Nano-fabrication, Sub-nanometer positioning</li>
-                    </ul>
-                </div>
-                <div class="exp-item">
-                    <h3>Application Engineer</h3>
-                    <div class="date">Oct 2021 – Mar 2023</div>
-                    <div class="institution">GenISys GmbH</div>
-                    <ul>
-                        <li>Maintain and improve training of the products</li>
-                        <li>Support Field Application team on technically complex / special application</li>
-                        <li>Contributes to overall technical specification during the development cycle time and release planning</li>
-                        <li>Projects management</li>
-                        <li>Coordinate among developers and cooperation partners for hardware and software</li>
-                        <li>On-site planning for test and evaluation</li>
-                        <li>Image and data processing and documentation</li>
-                    </ul>
-                </div>
-                <div class="exp-item">
-                    <h3>Test Automation Engineer</h3>
-                    <div class="date">Oct 2019 – Sep 2021</div>
-                    <div class="institution">Carl Zeiss SMT GmbH</div>
-                    <ul>
-                        <li>Development, execution and maintenance automated tests using Ranorex and self-made Test Automation Framework (TAF)</li>
-                        <li>Analysis and troubleshooting errors in test reports</li>
-                        <li>Maintenance of test data with GIT</li>
-                        <li>Continuous improvement of the existing structure of automated tests</li>
-                        <li>Further development and optimization Test Automation Framework (TAF)</li>
-                    </ul>
-                </div>
-                <div class="exp-item">
-                    <h3>Research Assistant / Intern</h3>
-                    <div class="date">Mar 2019 – Sep 2021</div>
-                    <div class="institution">Fraunhofer Institute for Applied Optics and Precision Engineering IOF</div>
-                    <ul>
-                        <li>Master Thesis: Investigation of Direct Writing Methods for Large Area Gratings</li>
-                        <li>Research Labwork: System Design for Direct Writing Interference Lithography</li>
-                        <li>Internship: Compact Microoptical System for Multispectral Imaging</li>
-                    </ul>
-                </div>
-                <div class="exp-item">
-                    <h3>Intern</h3>
-                    <div class="date">Mar 2018 – Aug 2018</div>
-                    <div class="institution">Robert Bosch</div>
-                    <ul>
-                        <li>VBA and SQL programming for Microsoft Office</li>
-                        <li>Data maintenance and process with SAP</li>
-                        <li>Coordination among logistics, customs, accounting, and corporate management</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title">Professional Experience</h2>
 
-        <section id="certificates">
-            <h2>Certificates & Licenses</h2>
-            <div class="certificates">
-                <ul>
-                    <li>Zeiss Smart Glasses Technology Challenge with Design Thinking</li>
-                    <li>Driving License</li>
-                </ul>
+            <div class="experience-item">
+                <div class="exp-title">Scientific Staff</div>
+                <div class="exp-company">TU Ilmenau / NanoFab / IPMS</div>
+                <div class="exp-period">Apr 2023 - Present</div>
+                <div class="exp-description">
+                    Research and development in advanced manufacturing technologies:
+                    <ul>
+                        <li>Micro and nano-metrology techniques</li>
+                        <li>Micro and nano-fabrication processes</li>
+                        <li>Sub-nanometer positioning systems</li>
+                    </ul>
+                </div>
             </div>
-        </section>
-    </main>
+
+            <div class="experience-item">
+                <div class="exp-title">Application Engineer</div>
+                <div class="exp-company">GenISys GmbH</div>
+                <div class="exp-period">Oct 2021 - Mar 2023</div>
+                <div class="exp-description">
+                    <ul>
+                        <li>Maintained and improved product training programs</li>
+                        <li>Supported field application team on technically complex applications</li>
+                        <li>Contributed to technical specifications during development cycles</li>
+                        <li>Managed projects coordinating developers and cooperation partners</li>
+                        <li>Performed image and data processing with comprehensive documentation</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="exp-title">Test Automation Engineer</div>
+                <div class="exp-company">Carl Zeiss SMT GmbH</div>
+                <div class="exp-period">Oct 2019 - Sep 2021</div>
+                <div class="exp-description">
+                    <ul>
+                        <li>Developed and maintained automated tests using Ranorex and custom frameworks</li>
+                        <li>Analyzed and troubleshooted errors in test reports</li>
+                        <li>Continuously improved automated test structures</li>
+                        <li>Optimized Test Automation Framework (TAF)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="exp-title">Research Associate & Intern</div>
+                <div class="exp-company">Fraunhofer Institute IOF</div>
+                <div class="exp-period">Mar 2019 - Sep 2021</div>
+                <div class="exp-description">
+                    Conducted research in optical systems and lithography, including master thesis on direct writing methods for large area gratings and system design for interference lithography.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Micro & Nano Technology</h3>
+                    <ul>
+                        <li>Optical proximity correction</li>
+                        <li>Proximity effect correction</li>
+                        <li>Clean room processes</li>
+                        <li>Electron beam lithography</li>
+                        <li>Layout design (GDSII, OASIS)</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Metrology & Measurement</h3>
+                    <ul>
+                        <li>Fizeau phase-shift interferometer</li>
+                        <li>Scanning laser microscope</li>
+                        <li>White light interferometer</li>
+                        <li>SEM (Zeiss AURIGA, Raith systems)</li>
+                        <li>Image processing & analysis</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Software & Programming</h3>
+                    <ul>
+                        <li>MATLAB, Python, Visual Basic</li>
+                        <li>Zemax, Tracepro</li>
+                        <li>Ranorex test automation</li>
+                        <li>Azure DevOps, SAP, SugarCRM</li>
+                        <li>Windows, Linux</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Languages</h3>
+                    <ul>
+                        <li>English (Professional)</li>
+                        <li>German (Professional)</li>
+                        <li>Chinese (Native)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Research Projects</h2>
+
+            <div class="project-item">
+                <div class="project-title">Direct Laser Writing Lithography and Metrology</div>
+                <div class="project-period">Apr 2023 - Present</div>
+                <div class="project-description">
+                    Investigation of single and multi-photon lithography on nanopositioning machines. Design and characterization of direct laser writing systems, including optical, mechanical, and electronic implementation. Development of metrology solutions for lithography alignment and configurable fabrication.
+                </div>
+            </div>
+
+            <div class="project-item">
+                <div class="project-title">Data Preparation and Simulation for Lithography</div>
+                <div class="project-period">Oct 2021 - Mar 2023</div>
+                <div class="project-description">
+                    Proximity correction and optimization of layout data to minimize design-manufacturing deviation. Process simulation and prediction. Advanced metrology including roughness evaluation, overlay measurement, and automated SEM inspection.
+                </div>
+            </div>
+
+            <div class="project-item">
+                <div class="project-title">Investigation of Direct Writing Methods for Large Area Gratings</div>
+                <div class="project-period">Aug 2020 - Sep 2021</div>
+                <div class="project-description">
+                    Master thesis project focusing on exposure recipe design, batch command programming, and comprehensive characterization using multiple measurement techniques. Optimization of lithography system performance including resolution, homogeneity, and stability.
+                </div>
+            </div>
+
+            <div class="project-item">
+                <div class="project-title">System Design for Direct Writing Interference Lithography</div>
+                <div class="project-period">Nov 2019 - Jul 2020</div>
+                <div class="project-description">
+                    Optical design including diffractive gratings, mechanical assembly, and electronic control with LabVIEW. Collaboration with partners for system integration and clean room processing.
+                </div>
+            </div>
+        </div>
+    </section>
 
     <footer>
-        <p>&copy; 2025 Xinchang Zou. All rights reserved.</p>
+        <div class="container">
+            <p>&copy; 2024 Xinchang Zou. All rights reserved.</p>
+        </div>
     </footer>
-
-    <script>
-        // Simple smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
 </body>
 </html>
